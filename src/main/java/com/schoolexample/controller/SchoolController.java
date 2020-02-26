@@ -38,7 +38,7 @@ public class SchoolController {
             if (schoolRepository.findById(id).isPresent()) {
                 return schoolRepository.findById(id);
             }
-            return new Response(HttpStatus.valueOf(404), "School not found", 404);
+            return new Response(HttpStatus.OK.value(), "School not found", 200);
         } catch (Exception e) {
             throw new RecordNotFoundException(e, this.getClass(), new Object() {
             }.getClass().getEnclosingMethod().getName());
@@ -60,7 +60,7 @@ public class SchoolController {
                 school.setId(id);
                 return schoolRepository.save(school);
             }
-            return new Response(HttpStatus.NOT_FOUND, "Id not found", 404);
+            return new Response(HttpStatus.NOT_FOUND.value(), "Id not found", 404);
         } catch (Exception e) {
             throw new RecordNotFoundException(e, this.getClass(), new Object() {
             }.getClass().getEnclosingMethod().getName());

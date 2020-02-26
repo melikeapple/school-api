@@ -36,9 +36,9 @@ public class StudentController {
         try {
             studentRepository.findById(id);
             if (studentRepository.findById(id).isPresent()) {
-                return new Response(HttpStatus.OK, "Ok", 200);
+                return new Response(HttpStatus.OK.value(), "Ok", 200);
             }
-            return new Response(HttpStatus.NOT_FOUND, "Response not found", 404);
+            return new Response(HttpStatus.NOT_FOUND.value(), "Response not found", 404);
         } catch (Exception e) {
             throw new RecordNotFoundException(e, this.getClass(), new Object() {
             }.getClass().getEnclosingMethod().getName());
@@ -59,9 +59,9 @@ public class StudentController {
 
             if (studentRepository.findById(id).isPresent()) {
                 student.setId(id);
-                return new Response(HttpStatus.OK, "", 200);
+                return new Response(HttpStatus.OK.value(), "", 200);
             }
-            return new Response(HttpStatus.NOT_FOUND, "Response not found", 404);
+            return new Response(HttpStatus.NOT_FOUND.value(), "Response not found", 404);
         } catch (Exception e) {
             throw new RecordNotFoundException(e, this.getClass(), new Object() {
             }.getClass().getEnclosingMethod().getName());
